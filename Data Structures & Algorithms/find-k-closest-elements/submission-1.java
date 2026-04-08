@@ -1,0 +1,21 @@
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int n = arr.length;
+        int left = 0, right = n - 1;
+
+        // Shrink window until size == k
+        while (right - left + 1 > k) {
+            if (Math.abs(arr[left] - x) > Math.abs(arr[right] - x)) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}
